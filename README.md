@@ -22,7 +22,7 @@ You may change the label to be different to the label's text.
 
 ###addTitleAtt###
 
-If true, then the label's text will be made the input's title attribute. It will not overwrite existing attributes.
+If true, then the input's title attribute will be equal to the label's text. It will not overwrite any existing title attribute.
 
 ###customClasses###
 

@@ -129,7 +129,7 @@
                     obj.removeClass(options.labeledClass);
 
                     label.hide();
-                    if (defaultValue) {
+                    if (defaultValue || $.trim(obj.val()) == '') {
                         obj.css('textIndent', 0);
                     }
                 });

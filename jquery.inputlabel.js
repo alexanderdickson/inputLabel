@@ -47,8 +47,11 @@
                     obj.insertAfter(label);
                 }
 
-                // Could not find label, so skip this element!
-                if (label.length == 0) {
+                // Could not find label, so make one with custom label if present, or skip this element!
+                if (label.length == 0 && options.customLabel) {
+                    label = $('<label />', { for: id });
+                    label.insertBefore(obj);
+                } else {
                     return;
                 }
 

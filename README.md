@@ -41,7 +41,10 @@ If true, then the input's title attribute will be set to the label's text. It wi
 Allows you control of the classes added to the elements required. The defaults are listed below in the example code.
 
     $('input').inputLabel({
+            // Added to all labels processed
             labelClass: 'input-label',
+            // Added to input elements that have been processed
             labeledClass: 'input-labeled',
+            // Added to the wrapper element that contains the input and label
             wrapperClass: 'input-wrapper'
     });

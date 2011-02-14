@@ -1,4 +1,4 @@
-#inputLabel 2.0#
+#inputLabel 2.1#
 
 Copyright (c) 2011 Alex Dickson
 
@@ -14,16 +14,34 @@ An easy cross browser compatible way to have labels contained in their inputs.
 
     $('form input#email').inputLabel();
 
-There are more options available...
+##Options##
 
-###customLabel###
+###Custom label###
 
-You may change the label to be different to the label's text.
+You may change the label to be different to the label's text. If no label is present, one is created.
 
-###addTitleAtt###
+    $('input').inputLabel({
+       customLabel: 'Email'
+    });
 
-If true, then the input's title attribute will be equal to the label's text. It will not overwrite any existing title attribute.
+As of 1.2, you can also pass in the custom label as the first argument to the plugin.
 
-###customClasses###
+    $('input').inputLabel('Email');
 
-Refer to source code.
+###Set title attribute to label###
+
+If true, then the input's title attribute will be set to the label's text. It will not overwrite existing attributes. Defaults to true.
+
+    $('input').inputLabel({
+       addTitleAtt: false
+    });
+
+###Custom classes###
+
+Allows you control of the classes added to the elements required. The defaults are listed below in the example code.
+
+    $('input').inputLabel({
+            labelClass: 'input-label',
+            labeledClass: 'input-labeled',
+            wrapperClass: 'input-wrapper'
+    });

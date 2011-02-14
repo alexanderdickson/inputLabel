@@ -1,5 +1,5 @@
 /*
- * inputLabel 2.0
+ * inputLabel 2.1
  * -----------------
  * An easy cross browser compatible way to have labels contained in their inputs.
  * http://www.alexanderdickson.com/
@@ -23,7 +23,15 @@
             labeledClass: 'input-labeled',
             wrapperClass: 'input-wrapper'
         };
-        var options = $.extend(defaults, options);
+
+        // Support for custom label passed in as string
+        if (typeof options == 'string') {
+            options = { customLabel: options };
+        }
+
+        options = $.extend(defaults, options);
+
+
         return this.each(function() {
             var objs = $(this);
 
@@ -33,7 +41,7 @@
                 // Only input[type=text], input[type=password] and textareas
                 if (!obj.is(':text, :password, textarea')) {
                     return;
-                };
+                }
 
                 // Get associated label
                 // Check if using for attribute
@@ -48,11 +56,16 @@
                 }
 
                 // Could not find label, so make one with custom label if present, or skip this element!
-                if (label.length == 0 && options.customLabel) {
-                    label = $('<label />', { for: id });
-                    label.insertBefore(obj);
-                } else {
-                    return;
+               if (label.length == 0) {
+                    if (options.customLabel) {
+                        label = $('<label />', {
+                            'for': id
+                        });
+                        label.insertBefore(obj);
+
+                    } else {
+                        return;
+                    }
                 }
 
                 if (options.customLabel) {
@@ -79,7 +92,7 @@
                 wrapper.css({
                     width: inputWidth,
                     height: inputHeight,
-                    position: 'relative',
+                    position: 'relative'
 
                 });
 

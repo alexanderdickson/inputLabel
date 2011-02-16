@@ -1,6 +1,8 @@
-#inputLabel 2.1#
+#inputLabel 2.2#
 
 Copyright (c) 2011 Alex Dickson
+
+Releases 2010-02-16.
 
 Licensed under the MIT licenses.
 

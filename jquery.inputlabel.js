@@ -66,7 +66,6 @@
                 // and also prefix with `input-` to stop any invalid 'id'
                 // which may start with a number.
                 id = 'input-' + obj.attr('name') + '-' + obj.index('*');
-                console.log(id);
                 obj.attr({
                     'id': id
                 });
@@ -87,19 +86,21 @@
                 });
 
                 // Maybe there is a placeholder attribute we can get
-                var placeholderAttr;
+                var placeholderAttr = obj.attr('placeholder');
 
-                if (options.customLabel) {
-                    label.html(options.customLabel);
-                } else if (placeholderAttr = obj.attr('placeholder')) {
+                if (placeholderAttr) {
                     label.html(placeholderAttr);
                     obj.removeAttr('placeholder');
-                } else {
+                } else if ( ! options.customLabel) {
                     // Well, we tried :)
                     return;
                 }
 
                 label.insertBefore(obj);
+            }
+
+            if (options.customLabel) {
+                label.html(options.customLabel);
             }
 
             if (options.addTitleAtt) {
@@ -143,11 +144,10 @@
                 marginRight: 0,
                 marginBottom: 0,
                 marginLeft: 0
-            })
+            });
 
             wrapper.css({
-                width: obj.width(),
-                height: obj.height(),
+                height: obj.outerHeight(),
                 position: 'relative'
 
             });
@@ -190,9 +190,11 @@
 
             if (obj.val() == defaultValue) {
                 obj.css('textIndent', textIndentOffset);
+            } else {
+            	label.hide();
             }
 
-            label.click(function() {
+            label.add(obj).click(function() {
                 obj.focus();
             });
 

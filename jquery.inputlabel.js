@@ -114,9 +114,10 @@
 
             // Wrap element
             var objParent = obj.parent(),
+                objIndex = obj.index(),
                 wrapper = label.add(obj).wrapAll('<div/>').parent();
 
-            wrapper.appendTo(objParent);
+            wrapper.insertAfter(objParent.children().eq(objIndex));
             wrapper.addClass(options.wrapperClass);
 
             // Some neccesary CSS
